@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphique des valeurs du capteur</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom/dist/chartjs-plugin-zoom.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        canvas {
+            max-width: 90%;
+            height: auto;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 10px;
+            background-color: #1e88e5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #1565c0;
+        }
+    </style>
+</head>
+<body>
+	<h3>&#128172 Graphique des valeurs du capteur</h3>
+    <canvas id="sensorChart"></canvas>
+    <button id="resetZoomButton">Réinitialiser le zoom</button>
+
+    <script>
+        let chart;
+
+        async function fetchData() {
+            try {
+                const response = await fetch('/data'); // Point de terminaison pour récupérer les données
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error("Erreur lors de la récupération des données : ", error);
+            }
+        }
+
+        function updateChart(data) {
+            if (!data || !chart) return;
+
+            // Met à jour les données et les labels (timestamps)
+            chart.data.labels = data.timestamps;
+            chart.data.datasets[0].data = data.values;
+
+            // Met à jour les couleurs des points en fonction des nouvelles valeurs
+            const minValue = Math.min(...data.values);
+            const maxValue = Math.max(...data.values);
+            chart.data.datasets[0].pointBackgroundColor = data.values.map(value => {
+                const ratio = (value - minValue) / (maxValue - minValue);
+                return `rgba(${255 * (1 - ratio)}, 0, ${255 * ratio}, 1)`; // Dégradé de rouge à bleu
+            });
+            chart.data.datasets[0].pointBorderColor = chart.data.datasets[0].pointBackgroundColor;
+
+            chart.update();
+        }
+
+        async function initializeChart() {
+            const data = await fetchData();
+            if (!data) {
+                console.error("Pas de données reçues");
+                return;
+            }
+
+            const ctx = document.getElementById('sensorChart').getContext('2d');
+
+            // Crée le graphique
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.timestamps, // Les timestamps
+                    datasets: [{
+                        label: 'Valeur du capteur Photon',
+                        data: data.values,     // Les valeurs du capteur
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderWidth: 2,
+                        pointBackgroundColor: [], // Sera défini plus tard
+                        pointBorderColor: [],     // Sera défini plus tard
+                        pointRadius: 2.5,
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'minute',
+                            },
+                            ticks: {
+                                color: '#e0e0e0'
+                            },
+                            grid: {
+                                color: '#444'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#e0e0e0'
+                            },
+                            grid: {
+                                color: '#444'
+                            }
+                        }
+                    },
+                    plugins: {
+                        zoom: {
+                            zoom: {
+                                wheel: {
+                                    enabled: true
+                                },
+                                mode: 'x'
+                            },
+                            pan: {
+                                enabled: true,
+                                mode: 'x'
+                            }
+                        },
+                        legend: {
+                            labels: {
+                                color: '#e0e0e0'
+                            }
+                        }
+                    }
+                }
+            });
+
+            document.getElementById('resetZoomButton').addEventListener('click', () => {
+                chart.resetZoom();
+            });
+        }
+
+        // Initialiser le graphique au chargement de la page
+        initializeChart();
+
+        // Mettre à jour les données toutes les 5 secondes
+        setInterval(async () => {
+            const newData = await fetchData();
+            updateChart(newData);
+        }, 1000); // Actualise toutes les 5 secondes
+    </script>
+</body>
+</html>
