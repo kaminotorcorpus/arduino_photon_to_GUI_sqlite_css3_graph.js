@@ -16,6 +16,7 @@
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/fqMqTTc/arduinotemp.png" alt="arduinotemp" border="0"></a>
 <br/><br/>
 <h2>appgui_avecsqlite.py</h2>
+<br/><a href="https://ibb.co/DQ2pZC2"><img src="https://i.ibb.co/0rbtxMb/guitemp.png" alt="guitemp" border="0"></a><br/>
 <p>Ce projet est une interface graphique d&eacute;velopp&eacute;e avec Python et Tkinter pour surveiller les donn&eacute;es d'un capteur connect&eacute; via un port s&eacute;rie. Les donn&eacute;es captur&eacute;es sont stock&eacute;es dans une base de donn&eacute;es SQLite, affich&eacute;es en temps r&eacute;el sous forme de graphique, et une jauge de progression visualise la valeur actuelle du capteur. Ce projet permet &eacute;galement de d&eacute;finir une plage de temps pour visualiser plus ou moins de points de donn&eacute;es sur le graphique.</p>
 <h3>Fonctionnalit&eacute;s Principales</h3>
 <ol>
@@ -122,6 +123,7 @@
 </ol>
 <br/>
 <h2>api_to_generate_html.py</h2>
+<br/><a href="https://ibb.co/s3tFmHf"><img src="https://i.ibb.co/kcMhH17/webtemp.png" alt="webtemp" border="0"></a><br/>
 <p>Ce projet est une application web bas&eacute;e sur Flask, qui permet de visualiser les donn&eacute;es collect&eacute;es par un capteur &agrave; partir d'une base de donn&eacute;es SQLite. L'application sert une page HTML et expose une API pour acc&eacute;der aux donn&eacute;es du capteur sous forme de JSON. Cette application est id&eacute;ale pour les projets IoT ou autres o&ugrave; les donn&eacute;es du capteur doivent &ecirc;tre visualis&eacute;es ou trait&eacute;es dans une interface web.</p>
 <h3>Fonctionnalit&eacute;s Principales</h3>
 <ol>
