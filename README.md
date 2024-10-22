@@ -236,4 +236,8 @@
 </ul>
 </li>
 </ol>
+<br/>
+<h2>Schema de montage arduino</h2>
+<br/>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/fqMqTTc/arduinotemp.png" alt="arduinotemp" border="0"></a><br /><a target='_blank' href='https://usefulwebtool.com/characters-cyrillic'>cyrillic character</a><br />
 
