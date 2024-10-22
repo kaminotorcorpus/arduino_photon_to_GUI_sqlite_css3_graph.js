@@ -9,7 +9,7 @@
 <br/>
 4 - lancer l'interface visuel GUI (avec ou sans sqlite)
 <br/>
-5 - lancer l'interface web pour visualiser la courbe du capteur en utilisant graph.js
+5 - lancer l'interface web pour visualiser la courbe du capteur en utilisant graph.js. Le fichier <b>index.html</b> doit etre dans le dossier "templates"
 <br/><br/>
 <a href="https://ibb.co/DQ2pZC2"><img src="https://i.ibb.co/0rbtxMb/guitemp.png" alt="guitemp" border="0"></a>
 <a href="https://ibb.co/s3tFmHf"><img src="https://i.ibb.co/kcMhH17/webtemp.png" alt="webtemp" border="0"></a>
