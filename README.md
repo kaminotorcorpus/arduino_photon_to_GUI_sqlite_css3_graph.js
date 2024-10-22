@@ -11,9 +11,7 @@
 <br/>
 5 - lancer l'interface web pour visualiser la courbe du capteur en utilisant graph.js. Le fichier <b>index.html</b> doit etre dans le dossier "templates"
 <br/><br/>
-<a href="https://ibb.co/DQ2pZC2"><img src="https://i.ibb.co/0rbtxMb/guitemp.png" alt="guitemp" border="0"></a>
-<a href="https://ibb.co/s3tFmHf"><img src="https://i.ibb.co/kcMhH17/webtemp.png" alt="webtemp" border="0"></a>
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/fqMqTTc/arduinotemp.png" alt="arduinotemp" border="0"></a>
+<a href="https://ibb.co/dr6r2Z8"><img src="https://i.ibb.co/0cZcM5H/Nouveau-projet-5.jpg" alt="Nouveau-projet-5" border="0"></a>
 <br/><br/>
 <h2>appgui_avecsqlite.py</h2>
 <br/><a href="https://ibb.co/DQ2pZC2"><img src="https://i.ibb.co/0rbtxMb/guitemp.png" alt="guitemp" border="0"></a><br/>
@@ -123,7 +121,7 @@
 </ol>
 <br/>
 <h2>api_to_generate_html.py</h2>
-<br/><a href="https://ibb.co/s3tFmHf"><img src="https://i.ibb.co/kcMhH17/webtemp.png" alt="webtemp" border="0"></a><br/>
+<br/><a href="https://ibb.co/jLDtb77"><img src="https://i.ibb.co/tbDRQyy/repssssss.png" alt="repssssss" border="0"></a><br/>
 <p>Ce projet est une application web bas&eacute;e sur Flask, qui permet de visualiser les donn&eacute;es collect&eacute;es par un capteur &agrave; partir d'une base de donn&eacute;es SQLite. L'application sert une page HTML et expose une API pour acc&eacute;der aux donn&eacute;es du capteur sous forme de JSON. Cette application est id&eacute;ale pour les projets IoT ou autres o&ugrave; les donn&eacute;es du capteur doivent &ecirc;tre visualis&eacute;es ou trait&eacute;es dans une interface web.</p>
 <h3>Fonctionnalit&eacute;s Principales</h3>
 <ol>
